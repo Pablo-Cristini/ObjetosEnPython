@@ -13,8 +13,8 @@ def main():
     empresa.agregar_empleado(Empleado("María", "55443322", catCajero))
 
     trabajos = [
-         Trabajo("Repositor gondolas", catRepositor, 2000, 6),
-    #     Trabajo("Asistente en Hogar", catAsistente, 3000, 5),
+        Trabajo("Repositor gondolas", catRepositor, 2000, 6),
+        Trabajo("Asistente en Hogar", catAsistente, 3000, 2),
     #     Trabajo("Asistente en Electrodomesticos", catAsistente, 1800, 8),
     #     Trabajo("Cajero caja 5", catCajero, 1900, 8),
     #     Trabajo("Cajero caja 4", catCajero, 2100, 8),
@@ -28,7 +28,7 @@ def main():
     for trabajo in trabajos:
         empleado_asignado = buscador.asignarTrabajoAEmpleado(trabajo, lista_empleados)
         if empleado_asignado:
-            print(f" Se asignó '{trabajo.descripcion}' a {empleado_asignado.nombre}")
+            print(f" Se asignó '{trabajo.descripcion}' a {empleado_asignado.nombre} {trabajo.cantHoras} horas")
         else:
             print(f"No hay empleados disponibles '{trabajo.descripcion}'")
 
