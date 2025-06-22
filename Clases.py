@@ -19,23 +19,19 @@ class Persona(ABC):  #clase Abstracta Persona
     def dni(self):
         return self.__dni
 
-    @abstractmethod         #metodo Abstracto de la clase abstracta
+    @abstractmethod         #metodo Abstracto de la clase abstract, tambien uso el polimorfismo
     def mostrarDatos(self):
         pass
 
 class Empleado(Persona): #Empleado hereda de Persona
-    def __init__(self, nombre, dni, categoria, sueldoTotal):
+    def __init__(self, nombre, dni, categoria):
         super().__init__(nombre, dni)
         self.__categoria = categoria
-        self.__sueldoTotal = sueldoTotal
         self.__trabajo = None
 
     @property
     def categoria(self):
         return self.__categoria
-    @property
-    def sueldoTotal(self):
-        return self.__sueldoTotal
     @property
     def trabajo(self):
         return self.__trabajo
@@ -49,7 +45,7 @@ class Empleado(Persona): #Empleado hereda de Persona
             trabajo_str = self.trabajo.descripcion
         else:
             trabajo_str = "Sin trabajo asignado"
-            print(f"Nombre Empleado: {self.nombre}, DNI: {self.dni}, Categoria: {self.categoria.nombre}, Sueldo Total: {self.sueldoTotal}, Trabajo: {trabajo_str}")
+            print(f"Nombre Empleado: {self.nombre}, DNI: {self.dni}, Categoria: {self.categoria.nombre}, Trabajo: {trabajo_str}")
 
 class Categoria:
     def __init__(self, nombre):
@@ -83,7 +79,7 @@ class Buscador:
         for i, empleado in enumerate(lista_empleados):
             if empleado.categoria == trabajo.categoria and empleado.trabajo is None:
                 empleado.trabajo = trabajo
-                lista_empleados.append(lista_empleados.pop(i))  # Mando empleado al final
+                lista_empleados.append(lista_empleados.pop(i))  # Mando empleado al final para no evitar que el mismo empleado tome otro trabajo.
                 return empleado
         return None
 
