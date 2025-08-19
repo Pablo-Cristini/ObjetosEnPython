@@ -1,4 +1,8 @@
-from Clases import Categoria, Empleado, Trabajo, Buscador, Empresa
+from Buscador import Buscador
+from Categoria import Categoria
+from Empleado import Empleado
+from Empresa import Empresa
+from TrabajoFactory import TrabajoFactory
 
 def main():
     catRepositor = Categoria("Repositor")
@@ -13,13 +17,10 @@ def main():
     empresa.agregar_empleado(Empleado("María", "55443322", catCajero))
 
     trabajos = [
-        Trabajo("Repositor gondolas", catRepositor, 2000, 6),
-        Trabajo("Asistente en Hogar", catAsistente, 3000, 2),
-    #     Trabajo("Asistente en Electrodomesticos", catAsistente, 1800, 8),
-    #     Trabajo("Cajero caja 5", catCajero, 1900, 8),
-    #     Trabajo("Cajero caja 4", catCajero, 2100, 8),
-    #     Trabajo("Repositor heladeras", catRepositor, 2100, 8),
-    ]
+    TrabajoFactory.crear_trabajo("Repositor gondolas", catRepositor, 2000, 6),
+    TrabajoFactory.crear_trabajo("Asistente en Hogar", catAsistente, 3000, 2),  
+    TrabajoFactory.crear_trabajo("Cajero caja 5", catCajero, 500, 10),          
+]
 
     lista_empleados = empresa.obtener_empleados()
 
